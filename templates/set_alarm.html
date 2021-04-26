@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alarm Clock</title>
+</head>
+<body>
+
+    <form method="POST" action= "{{url('set_alarm')}}" enctype="multipart/form-data">
+        <label for="input">Choose date : </label>
+        <input type="date" placeholder="dd-mm-yyyy" id="today" name="date" required><br><br> 
+
+        <label>Hour :</label>
+        <input type="number" name="hour" id="hour" min="0" max="23">
+        <label>Minute :</label>
+        <input type="number" name="minute" id="minute" min="0" max="59"><br>
+        <br>
+        <label>Alarm Name :</label>
+        <input type="text" name="name" >
+        <label>Ringtone :</label>
+        <input type="file" name="filename" accept=".mp3,audio/*"><br><br>
+
+        <button type="submit">Set alarm</button>
+    </form>
+
+
+
+    {%block response%}
+    <p> response : {{response}}</p>
+    {%endblock%}
+
+
+</body>
+
+<script type="text/javascript">
+	document.querySelector("#hour").value = 0;
+    document.querySelector("#minute").value = 0;
+	document.querySelector("#today").value = new Date().toISOString().substr(0, 10);
+</script>
+
+</html>
